@@ -1,0 +1,27 @@
+.auth-wrapper {
+  width: 100%;
+  text-align: right;
+  padding-right: 30px;
+}
+
+.auth-wrapper button {
+  background-color: rgb(29, 68, 238);
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: none;
+}
+
+.auth-wrapper button:hover {
+  background-color: rgb(85, 113, 236);
+}
+
+.auth-wrapper button:active {
+  background-color: rgb(128, 147, 233);
+  outline: none;
+}
+
+.auth-wrapper button:focus {
+  outline: none;
+}
