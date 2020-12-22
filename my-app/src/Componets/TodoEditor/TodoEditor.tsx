@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './TodoEditor.css';
+
 
 export default function TodoEditor({ onSave }) {
   const [todoText, setTodoText] = useState('')
@@ -14,9 +16,12 @@ export default function TodoEditor({ onSave }) {
   }
 
   return (
-    <form onSubmit={submitHandler}>
-      <input type="text" value={todoText} onChange={onChangeTodoText} />
-      <button type="submit">Save</button>
-    </form>
+    <div className="todoEditor-wrap">
+      <form onSubmit={submitHandler} >
+        <input type="text" value={todoText} onChange={onChangeTodoText} />
+        <button type="submit">Save</button>
+      </form>
+
+    </div>
   )
 }

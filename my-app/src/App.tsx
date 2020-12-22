@@ -56,13 +56,19 @@ function App() {
       const todos = JSON.parse(persistedTodos);
       dispatch({
         type: ActionType.FETCH_TODOS,
-        payload: { todos }
-      })
+        payload: { todos },
+      });
     }
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
 
   return (
     <div className="App">
+      <h1 className="app-title">Amazing todos</h1>
       <TodoEditor onSave={addTodo} />
       {todos.length > 0 && <TodoList items={todos} onDeleteTodo={deleteTodo} />}
     </div>

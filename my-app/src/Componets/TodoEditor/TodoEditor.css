@@ -1,0 +1,29 @@
+.todoEditor-wrap {
+  margin-bottom: 30px;
+}
+
+.todoEditor-wrap input {
+  width: 300px;
+  height: 30px;
+}
+
+.todoEditor-wrap button {
+  background-color: rgb(29, 68, 238);
+  height: 36px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  padding-right: 10px;
+  padding-left: 10px;
+  outline: none;
+}
+
+.todoEditor-wrap button:hover {
+  background-color: rgb(85, 113, 236);
+}
+
+.todoEditor-wrap button:active {
+  background-color: rgb(128, 147, 233);
+  outline: none;
+}
