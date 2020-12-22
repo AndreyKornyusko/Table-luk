@@ -18,7 +18,12 @@ export default function TodoEditor({ onSave }) {
   return (
     <div className="todoEditor-wrap">
       <form onSubmit={submitHandler} >
-        <input type="text" value={todoText} onChange={onChangeTodoText} />
+        <input
+          type="text"
+          value={todoText}
+          onChange={onChangeTodoText}
+          placeholder="Type your toDo"
+        />
         <button type="submit">Save</button>
       </form>
 

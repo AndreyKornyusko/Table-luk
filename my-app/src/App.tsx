@@ -3,6 +3,7 @@ import shortid from 'shortid';
 import './App.css';
 import TodoEditor from '../src/Componets/TodoEditor/TodoEditor';
 import TodoList from '../src/Componets/TodoList/TodoList';
+import AuthManager from '../src/Componets/AuthManager/AuthManager';
 
 function App() {
 
@@ -68,6 +69,7 @@ function App() {
 
   return (
     <div className="App">
+      <AuthManager />
       <h1 className="app-title">Amazing todos</h1>
       <TodoEditor onSave={addTodo} />
       {todos.length > 0 && <TodoList items={todos} onDeleteTodo={deleteTodo} />}
