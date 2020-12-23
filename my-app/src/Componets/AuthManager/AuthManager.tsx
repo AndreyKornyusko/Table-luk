@@ -7,7 +7,7 @@ const AuthManager = () => {
 
 
   const login = () => {
-    // logIn();
+    logIn();
     console.log('logIn');
     console.log('authenticated', authenticated);
   };
@@ -16,7 +16,7 @@ const AuthManager = () => {
     console.log('logout');
     console.log('authenticated', authenticated);
 
-    // logOut();
+    logOut();
   };
 
   return (
