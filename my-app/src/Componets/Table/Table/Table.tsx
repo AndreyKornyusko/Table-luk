@@ -80,7 +80,7 @@ const Table = ({ items, handleChooseBtnClick }) => (
             key={id + phone}
           >
             <td>
-              <div>
+              <div className="table__btn-td-wrap">
                 <Dropdown
                 id={id}
                 onChange={handleChooseBtnClick}

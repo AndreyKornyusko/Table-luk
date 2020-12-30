@@ -20,20 +20,10 @@ const items = [
 export default function TableContainer() {
 
   const [stateItems, setState] = useState(items);
-  const [rowStatus, setRowStatus] = useState(
-    {
-      id: 10000, status: ""
-    }
-  );
+  const [rowStatus, setRowStatus] = useState({id: 1000065465665661654611, status: ""});
 
   useEffect(() => {
     const handledItems = stateItems.map(item => {
-      console.log("item.id", item.id);
-      console.log("rowStatus.id", rowStatus.id)
-
-      console.log("item.status", item.status);
-      console.log("rowStatus.status", rowStatus.status)
-
       if (item.id === rowStatus.id) {
         item.status = rowStatus.status;
       }

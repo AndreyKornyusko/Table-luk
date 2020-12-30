@@ -1,5 +1,4 @@
 .dropdown {
-  position: relative!important;
   display: inline-block;
 }
 
@@ -18,7 +17,7 @@
 .dropdown-menu {
   list-style: none;
   padding-left: 0;
-  position: absolute!important;
+  position: absolute;
   top: 100%;
   left: 0;
   margin: 0;
@@ -34,6 +33,7 @@
   outline: none;
   font-size: 16px;
   cursor: pointer;
+  list-style: none;
 }
 
 .dropdown-menu-item:active {

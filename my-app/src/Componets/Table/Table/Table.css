@@ -18,6 +18,8 @@ tr:nth-child(odd) {
 }
 tr:nth-child(even) {
   background: #ebeae5;
+  border-bottom: 1px solid #b9b29f;
+
 }
 
 .table__choose-btn-img-wrap {
@@ -35,4 +37,10 @@ tr:nth-child(even) {
   border-radius: 50%;
   background-color: #000;
   margin: 2px;
+}
+
+
+.table__btn-td-wrap{
+  width: 100%;
+  position: relative;
 }
