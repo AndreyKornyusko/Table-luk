@@ -8,14 +8,9 @@ const AuthManager = () => {
 
   const login = () => {
     logIn();
-    console.log('logIn');
-    console.log('authenticated', authenticated);
   };
 
   const logout = () => {
-    console.log('logout');
-    console.log('authenticated', authenticated);
-
     logOut();
   };
 

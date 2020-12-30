@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoList.css';
 
-export default function TodoList({ items, onDeleteTodo }) {
+export default function TodoList({ items, onDeleteTodo, onEditTodo }) {
   return (
     <ul className="todoList">
       {
@@ -14,6 +14,10 @@ export default function TodoList({ items, onDeleteTodo }) {
             <button
               onClick={() => onDeleteTodo(id)}
             >Delete</button>
+            {/* <button
+              onClick={() => onEditTodo(id, text)}
+            >Edit</button> */}
+
           </li>))
       }
     </ul>

@@ -4,11 +4,11 @@ export const authenticationContext = createContext('');
 
 export const AuthContextProvider = props => {
   const [authenticated, setAuthenticated] = useState(false);
-
+ 
   const logIn = () => {
     setAuthenticated(true);
   };
- 
+
   const logOut = () => {
     setAuthenticated(false);
   };
