@@ -15,27 +15,51 @@ const items = [
     id: 103, status: "Blocked", state: "ex president", city: "Vegas", collageName: "Barak Obama", firstName: "Barak", lastName: "Obama", phone: "455-44-43", collageEmail: "Obama@mail.com", trainingComplited: "1/8",
     complitedTours: 11, upcomingTours: "12", canceledTours: "12", resheduledTours: "12", joinDate: "12/12/2022"
   },
+  {
+    id: 104, status: "Blocked", state: "ex president", city: "Vegas", collageName: "Barak Obama", firstName: "Barak", lastName: "Obama", phone: "455-44-44", collageEmail: "Obama@mail.com", trainingComplited: "1/8",
+    complitedTours: 3, upcomingTours: "12", canceledTours: "12", resheduledTours: "12", joinDate: "12/12/2022"
+  },
+
 ]
 
 export default function TableContainer() {
 
   const [stateItems, setState] = useState(items);
   const [rowStatus, setRowStatus] = useState({ id: 1000065465665661654611, status: "" });
+  const [sortType, setSortType] = useState('rowIndex');
 
   useEffect(() => {
-
     const indexedStateItems = stateItems.map((item, index) => {
       item.index = index + 1
       return { id: item.id, status: item.status, rowIndex: index + 1 }
     });
     setState(indexedStateItems);
+  }, []);
 
+
+
+
+
+  useEffect(() => {
+    console.log("sortType", sortType)
+
+       const sortArray = type => {
+      const sortProperty = type;
+      const sorted = [...stateItems].sort((a, b) => b[sortProperty] - a[sortProperty]);
+      setState(sorted);
+    };
+
+    sortArray(sortType);
+  }, [sortType]);
+
+
+
+
+  useEffect(() => {
     const handledItems = stateItems.map(item => {
       if (item.id === rowStatus.id) {
         item.status = rowStatus.status;
       }
-
-
       return item
     });
     console.log("handledItems", handledItems)
@@ -45,8 +69,6 @@ export default function TableContainer() {
       const updatedItems = stateItems.filter(item => item.id !== rowStatus.id);
       setState(updatedItems);
     }
-
-
   }, [rowStatus]);
 
   const handleChooseBtnClick = (val, id) => {
@@ -58,18 +80,24 @@ export default function TableContainer() {
 
 
   const handleHeadBtnClickNumberCol = (e) => {
-    console.log('taget data-id', e.target.dataset['id'])
+    if (e.target.dataset['id'] === "complitedTours") {
+      console.log('taget data-id', e.target.dataset['id'])
 
-    const itemsToSort = stateItems;
-    console.log("itemsToSort", itemsToSort)
+      const itemsToSort = stateItems;
+      console.log("itemsToSort", itemsToSort)
 
-    const sortBy = (a, b) => a.complitedTours - b.complitedTours;
-    const sortedItems=itemsToSort.sort(sortBy);
-    console.log("sortedItems", sortedItems)
-    const itemsAfterSort = sortedItems.reverse()
-    console.log("itemsAfterSort", itemsAfterSort)
-    setState(itemsAfterSort)
 
+      const compare = (a, b) => {
+
+        return a.complitedTours - b.complitedTours
+      }
+      const sortedItems = itemsToSort.sort(compare);
+      console.log("sortedItems", sortedItems)
+      // const itemsAfterSort = sortedItems.reverse()
+      // console.log("itemsAfterSort", itemsAfterSort)
+      setState(sortedItems)
+
+    }
   }
 
 
@@ -89,7 +117,7 @@ export default function TableContainer() {
       <Table
         items={stateItems}
         handleChooseBtnClick={handleChooseBtnClick}
-        handleHeadBtnClickNumberCol={handleHeadBtnClickNumberCol}
+        handleHeadBtnClickNumberCol={(e) => setSortType(e.target.dataset['id'])}
         handleHeadBtnClickTextCol={handleHeadBtnClickTextCol}
         handleHeadBtnClickDateCol={handleHeadBtnClickDateCol}
 
