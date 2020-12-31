@@ -4,20 +4,20 @@ import Table from '../Table/Table';
 
 const items = [
   {
-    id: 101, status: "Active", state: "president", city: "New York", collageName: "Donald Trump", firstName: "Donald", lastName: "Trump", phone: "455-44-41", collageEmail: "trump@mail.com", trainingComplited: "1/6",
-    complitedTours: 8, upcomingTours: "10", canceledTours: "10", resheduledTours: "10", joinDate: "10/12/2020"
+    id: 101, status: "Active", state: "president", city: "New York", collageName: "Donald Trump", firstName: "Donald", lastName: "Trump", phone: "455-44-41", collageEmail: "trump@mail.com", trainingComplited: 1 / 6,
+    complitedTours: 8, upcomingTours: 10, canceledTours: 10, resheduledTours: 10, joinDate: "10/12/2020"
   },
   {
-    id: 102, status: "Pending", state: "great man", city: "Chicago", collageName: "Ilon Mask", firstName: "Ilon", lastName: "Mask", phone: "455-44-42", collageEmail: "Mask@mail.com", trainingComplited: "1/7",
-    complitedTours: 12, upcomingTours: "11", canceledTours: "11", resheduledTours: "11", joinDate: "11/12/2021"
+    id: 102, status: "Pending", state: "great man", city: "Chicago", collageName: "Ilon Mask", firstName: "Ilon", lastName: "Mask", phone: "455-44-42", collageEmail: "Mask@mail.com", trainingComplited: 1 / 2,
+    complitedTours: 12, upcomingTours: 7, canceledTours: 5, resheduledTours: 6, joinDate: "11/12/2021"
   },
   {
-    id: 103, status: "Blocked", state: "ex president", city: "Vegas", collageName: "Barak Obama", firstName: "Barak", lastName: "Obama", phone: "455-44-43", collageEmail: "Obama@mail.com", trainingComplited: "1/8",
-    complitedTours: 11, upcomingTours: "12", canceledTours: "12", resheduledTours: "12", joinDate: "12/12/2022"
+    id: 103, status: "Blocked", state: "ex president", city: "Vegas", collageName: "Barak Obama", firstName: "Barak", lastName: "Obama", phone: "455-44-43", collageEmail: "Obama@mail.com", trainingComplited: 1 / 8,
+    complitedTours: 11, upcomingTours: 14, canceledTours: 1, resheduledTours: 2, joinDate: "12/12/2022"
   },
   {
-    id: 104, status: "Blocked", state: "ex president", city: "Vegas", collageName: "Barak Obama", firstName: "Barak", lastName: "Obama", phone: "455-44-44", collageEmail: "Obama@mail.com", trainingComplited: "1/8",
-    complitedTours: 3, upcomingTours: "12", canceledTours: "12", resheduledTours: "12", joinDate: "12/12/2022"
+    id: 104, status: "Blocked", state: "ex president", city: "Vegas", collageName: "Barak Obama", firstName: "Barak", lastName: "Obama", phone: "455-44-44", collageEmail: "Obama@mail.com", trainingComplited: 1 / 1,
+    complitedTours: 3, upcomingTours: 12, canceledTours: 12, resheduledTours: 12, joinDate: "12/12/2022"
   },
 
 ]
@@ -26,7 +26,9 @@ export default function TableContainer() {
 
   const [stateItems, setState] = useState(items);
   const [rowStatus, setRowStatus] = useState({ id: 1000065465665661654611, status: "" });
-  const [sortType, setSortType] = useState('rowIndex');
+  const [sortNumberType, setSortNumberType] = useState('');
+  const [sortTextType, setSortTextType] = useState('');
+
 
   useEffect(() => {
     const indexedStateItems = stateItems.map((item, index) => {
@@ -37,20 +39,40 @@ export default function TableContainer() {
   }, []);
 
 
+  useEffect(() => {
+    console.log("sortTextType", sortTextType)
 
+    const sortArray = type => {
+      const sortProperty = type;
+      const sorted = [...stateItems].sort(function (a, b) {
+        const nameA = a.status;
+        const nameB = b.status;
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+      // const sorted = [...stateItems].sort((a, b) => b[sortProperty] - a[sortProperty]);
+      setState(sorted);
+    };
+
+    sortArray(sortTextType);
+  }, [sortTextType]);
 
 
   useEffect(() => {
-    console.log("sortType", sortType)
-
-       const sortArray = type => {
+    console.log("sortNumberType", sortNumberType)
+    const sortArray = type => {
       const sortProperty = type;
       const sorted = [...stateItems].sort((a, b) => b[sortProperty] - a[sortProperty]);
       setState(sorted);
     };
-
-    sortArray(sortType);
-  }, [sortType]);
+    sortArray(sortNumberType);
+  }, [sortNumberType]);
 
 
 
@@ -79,31 +101,22 @@ export default function TableContainer() {
   }
 
 
-  const handleHeadBtnClickNumberCol = (e) => {
-    if (e.target.dataset['id'] === "complitedTours") {
-      console.log('taget data-id', e.target.dataset['id'])
-
-      const itemsToSort = stateItems;
-      console.log("itemsToSort", itemsToSort)
-
-
-      const compare = (a, b) => {
-
-        return a.complitedTours - b.complitedTours
-      }
-      const sortedItems = itemsToSort.sort(compare);
-      console.log("sortedItems", sortedItems)
-      // const itemsAfterSort = sortedItems.reverse()
-      // console.log("itemsAfterSort", itemsAfterSort)
-      setState(sortedItems)
-
-    }
-  }
+  // const handleHeadBtnClickNumberCol = (e) => {
+  //   if (e.target.dataset['id'] === "complitedTours") {
+  //     const itemsToSort = stateItems;
+  //     const compare = (a, b) => {
+  //       return a.complitedTours - b.complitedTours
+  //     }
+  //     const sortedItems = itemsToSort.sort(compare);
+  //     console.log("sortedItems", sortedItems)
+  //     setState(sortedItems)
+  //   }
+  // }
 
 
-  const handleHeadBtnClickTextCol = (e) => {
-    console.log('taget data-id', e.target.dataset['id'])
-  }
+  // const handleHeadBtnClickTextCol = (e) => {
+  //   console.log('taget data-id', e.target.dataset['id'])
+  // }
 
   const handleHeadBtnClickDateCol = (e) => {
     console.log('taget data-id', e.target.dataset['id'])
@@ -117,8 +130,8 @@ export default function TableContainer() {
       <Table
         items={stateItems}
         handleChooseBtnClick={handleChooseBtnClick}
-        handleHeadBtnClickNumberCol={(e) => setSortType(e.target.dataset['id'])}
-        handleHeadBtnClickTextCol={handleHeadBtnClickTextCol}
+        handleHeadBtnClickNumberCol={(e) => setSortNumberType(e.target.dataset['id'])}
+        handleHeadBtnClickTextCol={(e) => setSortTextType(e.target.dataset['id'])}
         handleHeadBtnClickDateCol={handleHeadBtnClickDateCol}
 
       />
