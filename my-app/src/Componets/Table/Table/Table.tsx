@@ -17,100 +17,129 @@ const Table = ({
   handleHeadBtnClickNumberCol,
   handleHeadBtnClickTextCol,
   handleHeadBtnClickDateCol
- }) => (
+}) => (
     <table className="table">
       <thead >
         <tr>
           <th >
           </th>
           <th >
-            <div id="rowIndex" className="table__head-btn"
+            <div id="rowIndex"
+              data-id="rowIndex"
+              className="table__head-btn"
               onClick={handleHeadBtnClickNumberCol}>
-              <div className="table__head-title">#</div>
+              <div data-id="rowIndex"
+                className="table__head-title">#</div>
             </div>
           </th>
           <th >
-            <div id="status" className="table__head-btn"
+            <div id="status"
+              data-id="status"
+              className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div className="table__head-title">Status</div>
+              <div data-id="status" className="table__head-title">Status</div>
             </div>
           </th>
           <th >
-            <div id="state" className="table__head-btn"
+            <div id="state" data-id="state" className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div className="table__head-title">State</div>
+              <div data-id="state" className="table__head-title">State</div>
             </div>
           </th>
           <th >
-            <div id="city" className="table__head-btn"
+            <div id="city"
+              data-id="city"
+              className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div className="table__head-title">City</div>
+              <div data-id="city" className="table__head-title">City</div>
             </div>
           </th>
           <th >
-            <div id="collageName" className="table__head-btn"
+            <div id="collageName"
+              data-id="collageName"
+              className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div className="table__head-title">Collage Name</div>
+              <div data-id="collageName" className="table__head-title">Collage Name</div>
             </div>
           </th>
           <th >
-            <div id="firstName" className="table__head-btn"
+            <div id="firstName"
+              data-id="firstName"
+              className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div className="table__head-title">First Name</div>
+              <div data-id="firstName" className="table__head-title">First Name</div>
             </div>
           </th>
           <th >
-            <div id="lastName" className="table__head-btn"
+            <div id="lastName"
+              data-id="lastName"
+              className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div className="table__head-title">Last Name</div>
+              <div data-id="lastName" className="table__head-title">Last Name</div>
             </div>
           </th>
           <th >
-            <div id="phone" className="table__head-btn"
+            <div id="phone"
+              data-id="phone"
+              className="table__head-btn"
               onClick={handleHeadBtnClickNumberCol}>
-              <div className="table__head-title">Phone</div>
+              <div data-id="phone" className="table__head-title">Phone</div>
             </div>
           </th>
           <th >
-            <div id="collageEmail" className="table__head-btn"
+            <div id="collageEmail"
+              data-id="phocollageEmailne"
+              className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div className="table__head-title">Collage email</div>
+              <div data-id="collageEmail" className="table__head-title">Collage email</div>
             </div>
           </th>
           <th >
-            <div id="trainingComplited" className="table__head-btn"
+            <div id="trainingComplited"
+              data-id="trainingComplited"
+              className="table__head-btn"
               onClick={handleHeadBtnClickNumberCol}>
-              <div className="table__head-title">Training complited</div>
+              <div data-id="trainingComplited" className="table__head-title">Training complited</div>
             </div>
           </th>
           <th >
-            <div id="complitedTours" className="table__head-btn"
+            <div id="complitedTours"
+              data-id="complitedTours"
+              className="table__head-btn"
               onClick={handleHeadBtnClickNumberCol}>
-              <div className="table__head-title">Complited Tours</div>
+              <div data-id="complitedTours" className="table__head-title">Complited Tours</div>
             </div>
           </th>
           <th >
-            <div id="upcomingTours" className="table__head-btn"
+            <div id="upcomingTours"
+              data-id="upcomingTours"
+              className="table__head-btn"
               onClick={handleHeadBtnClickNumberCol}>
-              <div className="table__head-title">Upcoming Tours</div>
+              <div data-id="upcomingTours" className="table__head-title">Upcoming Tours</div>
             </div>
           </th>
           <th >
-            <div id="canceledTours" className="table__head-btn"
+            <div id="canceledTours"
+              data-id="canceledTours"
+              className="table__head-btn"
               onClick={handleHeadBtnClickNumberCol}>
-              <div className="table__head-title">Canceled Tours</div>
+              <div data-id="canceledTours" className="table__head-title">Canceled Tours</div>
             </div>
           </th>
           <th >
-            <div id="resheduledTours" className="table__head-btn"
+            <div id="resheduledTours"
+              data-id="resheduledTours"
+              className="table__head-btn"
               onClick={handleHeadBtnClickNumberCol}>
-              <div className="table__head-title">Resheduled Tours</div>
+              <div data-id="resheduledTours" className="table__head-title">Resheduled Tours</div>
             </div>
           </th>
           <th >
-            <div id="joinDate" className="table__head-btn"
+            <div id="joinDate"
+              data-id="joinDate"
+              className="table__head-btn"
               onClick={handleHeadBtnClickDateCol}>
-              <div className="table__head-title">Join date</div>
+              <div data-id="joinDate" className="table__head-title">Join date</div>
             </div>
           </th>
         </tr>
