@@ -8,7 +8,7 @@ const items = [
     complitedTours: "10", upcomingTours: "10", canceledTours: "10", resheduledTours: "10", joinDate: "10/12/2020"
   },
   {
-    id: 102, status: "Pending", state: "president", city: "New York", collageName: "Ilon Mask", firstName: "Ilon", lastName: "Mask", phone: "455-44-42", collageEmail: "trump@mail.com", trainingComplited: "1/6",
+    id: 102, status: "Pending", state: "great man", city: "New York", collageName: "Ilon Mask", firstName: "Ilon", lastName: "Mask", phone: "455-44-42", collageEmail: "trump@mail.com", trainingComplited: "1/6",
     complitedTours: "10", upcomingTours: "10", canceledTours: "10", resheduledTours: "10", joinDate: "10/12/2020"
   },
   {
@@ -20,18 +20,33 @@ const items = [
 export default function TableContainer() {
 
   const [stateItems, setState] = useState(items);
-  const [rowStatus, setRowStatus] = useState({id: 1000065465665661654611, status: ""});
+  const [rowStatus, setRowStatus] = useState({ id: 1000065465665661654611, status: "" });
 
   useEffect(() => {
+    const indexedStateItems = stateItems.map((item, index) => {
+      item.index = index + 1
+      return { id: item.id, status: item.status, rowIndex: index + 1 }
+    });
+    console.log("indexedStateItems", indexedStateItems)
+
+
     const handledItems = stateItems.map(item => {
       if (item.id === rowStatus.id) {
         item.status = rowStatus.status;
       }
+
+
       return item
     });
-
     console.log("handledItems", handledItems)
     setState(handledItems);
+
+    if (rowStatus.status === "Delete") {
+      const updatedItems = stateItems.filter(item => item.id !== rowStatus.id);
+      setState(updatedItems);
+    }
+
+
   }, [rowStatus]);
 
   const handleChooseBtnClick = (val, id) => {
@@ -42,6 +57,7 @@ export default function TableContainer() {
   }
 
   console.log("stateItems", stateItems)
+  console.log("rowStatus", rowStatus)
 
   return (
     <div>

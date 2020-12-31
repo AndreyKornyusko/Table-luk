@@ -22,25 +22,12 @@ tr:nth-child(even) {
 
 }
 
-.table__choose-btn-img-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.table__choose-btn {
-  width: 30px;
+.table__btn-td{
+  text-align: center;
+  padding: 0;
 }
 
-.table__choose-btn-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: #000;
-  margin: 2px;
-}
-
-
-.table__btn-td-wrap{
-  width: 100%;
-  position: relative;
+.table__head-btn{
+  cursor: pointer;
+  padding: 5px;
 }

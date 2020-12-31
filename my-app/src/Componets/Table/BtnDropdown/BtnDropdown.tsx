@@ -37,13 +37,17 @@ const Dropdown = ({ onChange, id }) => {
 
   return (
     <div ref={node} className="dropdown">
-      <div className="dropdown-toggler" onClick={e => setOpen(!open)}>
-        button
+      <div className="dropdown__toggler" onClick={e => setOpen(!open)}>
+        <div className="dropdown__btn-img-wrap">
+          <div className="dropdown__btn-img-dot"></div>
+          <div className="dropdown__btn-img-dot"></div>
+          <div className="dropdown__btn-img-dot"></div>
+        </div>
       </div>
       {open && (
-        <ul className="dropdown-menu">
+        <ul className="dropdown__menu">
           {options.map(opt => (
-            <li key={opt.id} className="dropdown-menu-item" onClick={e => handleChange(opt.id)}>
+            <li key={opt.id} className="dropdown__menu-item" onClick={e => handleChange(opt.id)}>
               {opt.value}
             </li>
           ))}
