@@ -4,20 +4,20 @@ import Table from '../Table/Table';
 
 const items = [
   {
-    id: 101, status: "Active", state: "president", city: "New York", collageName: "Donald Trump", firstName: "Donald", lastName: "Trump", phone: "455-44-41", collageEmail: "trump@mail.com", trainingComplited: 1 / 6,
-    complitedTours: 8, upcomingTours: 10, canceledTours: 10, resheduledTours: 10, joinDate: "10/12/2020"
+    id: 101, status: "Active", state: "president", city: "New York", collagename: "Donald Trump", firstname: "Donald", lastname: "Trump", phone: "455-44-41", collageemail: "trump@mail.com", trainingComplited: 1 / 6,
+    complitedTours: 8, upcomingTours: 10, canceledTours: 10, resheduledTours: 10, joindate: "Wed, 02 May 2013 08:00:00 GMT"
   },
   {
-    id: 102, status: "Pending", state: "great man", city: "Chicago", collageName: "Ilon Mask", firstName: "Ilon", lastName: "Mask", phone: "455-44-42", collageEmail: "Mask@mail.com", trainingComplited: 1 / 2,
-    complitedTours: 12, upcomingTours: 7, canceledTours: 5, resheduledTours: 6, joinDate: "11/12/2021"
+    id: 102, status: "Pending", state: "great man", city: "Chicago", collagename: "Ilon Mask", firstname: "Ilon", lastname: "Mask", phone: "455-44-42", collageemail: "Mask@mail.com", trainingComplited: 1 / 2,
+    complitedTours: 12, upcomingTours: 7, canceledTours: 5, resheduledTours: 6, joindate: "Wed, 27 May 2014 08:00:00 GMT"
   },
   {
-    id: 103, status: "Blocked", state: "ex president", city: "Vegas", collageName: "Barak Obama", firstName: "Barak", lastName: "Obama", phone: "455-44-43", collageEmail: "Obama@mail.com", trainingComplited: 1 / 8,
-    complitedTours: 11, upcomingTours: 14, canceledTours: 1, resheduledTours: 2, joinDate: "12/12/2022"
+    id: 103, status: "Blocked", state: "ex president", city: "Vegas", collagename: "Barak Obama", firstname: "Barak", lastname: "Obama", phone: "455-44-43", collageemail: "Obama@mail.com", trainingComplited: 1 / 8,
+    complitedTours: 11, upcomingTours: 14, canceledTours: 1, resheduledTours: 2, joindate: "Wed, 12 May 2011 08:00:00 GMT"
   },
   {
-    id: 104, status: "Blocked", state: "ex president", city: "Vegas", collageName: "Barak Obama", firstName: "Barak", lastName: "Obama", phone: "455-44-44", collageEmail: "Obama@mail.com", trainingComplited: 1 / 1,
-    complitedTours: 3, upcomingTours: 12, canceledTours: 12, resheduledTours: 12, joinDate: "12/12/2022"
+    id: 104, status: "Blocked", state: "ex president", city: "Vegas", collagename: "Barak Obama", firstname: "Barak", lastname: "Obama", phone: "455-44-44", collageemail: "Obama@mail.com", trainingComplited: 1 / 1,
+    complitedTours: 3, upcomingTours: 12, canceledTours: 12, resheduledTours: 12, joindate: "Wed, 25 May 2013 08:00:00 GMT"
   },
 
 ]
@@ -28,14 +28,16 @@ export default function TableContainer() {
   const [rowStatus, setRowStatus] = useState({ id: 1000065465665661654611, status: "" });
   const [sortNumberType, setSortNumberType] = useState('');
   const [sortTextType, setSortTextType] = useState('');
+  const [sortDateType, setSortDateType] = useState('');
 
 
   useEffect(() => {
     const indexedStateItems = stateItems.map((item, index) => {
-      item.index = index + 1
-      return { id: item.id, status: item.status, rowIndex: index + 1 }
+      item.rowindex = Number(index + 1);
+      return { id: item.id, status: item.status, rowindex: Number(index + 1) }
     });
     setState(indexedStateItems);
+    console.log("indexed stateItems", stateItems)
   }, []);
 
 
@@ -45,8 +47,8 @@ export default function TableContainer() {
     const sortArray = type => {
       const sortProperty = type;
       const sorted = [...stateItems].sort(function (a, b) {
-        const nameA = a.status;
-        const nameB = b.status;
+        const nameA = a[sortProperty.toLowerCase()];
+        const nameB = b[sortProperty.toLowerCase()];
         if (nameA < nameB) {
           return -1;
         }
@@ -56,12 +58,36 @@ export default function TableContainer() {
 
         return 0;
       });
-      // const sorted = [...stateItems].sort((a, b) => b[sortProperty] - a[sortProperty]);
       setState(sorted);
     };
 
     sortArray(sortTextType);
   }, [sortTextType]);
+
+
+  useEffect(() => {
+    console.log("sortDateType", sortDateType)
+
+    const sortArray = type => {
+      const sortProperty = type;
+      const sorted = [...stateItems].sort(function (a, b) {
+        const nameA = (new Date(a[sortProperty])).getTime();
+        const nameB = (new Date(b[sortProperty])).getTime();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+      setState(sorted);
+    };
+
+    sortArray(sortDateType);
+  }, [sortDateType]);
+
 
 
   useEffect(() => {
@@ -132,8 +158,7 @@ export default function TableContainer() {
         handleChooseBtnClick={handleChooseBtnClick}
         handleHeadBtnClickNumberCol={(e) => setSortNumberType(e.target.dataset['id'])}
         handleHeadBtnClickTextCol={(e) => setSortTextType(e.target.dataset['id'])}
-        handleHeadBtnClickDateCol={handleHeadBtnClickDateCol}
-
+        handleHeadBtnClickDateCol={(e) => setSortDateType(e.target.dataset['id'])}
       />
     </div>
   )

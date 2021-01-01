@@ -24,11 +24,11 @@ const Table = ({
           <th >
           </th>
           <th >
-            <div id="rowIndex"
-              data-id="rowIndex"
+            <div id="rowindex"
+              data-id="rowindex"
               className="table__head-btn"
               onClick={handleHeadBtnClickNumberCol}>
-              <div data-id="rowIndex"
+              <div data-id="rowindex"
                 className="table__head-title">#</div>
             </div>
           </th>
@@ -41,7 +41,9 @@ const Table = ({
             </div>
           </th>
           <th >
-            <div id="state" data-id="state" className="table__head-btn"
+            <div id="state"
+              data-id="state"
+              className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
               <div data-id="state" className="table__head-title">State</div>
             </div>
@@ -55,27 +57,28 @@ const Table = ({
             </div>
           </th>
           <th >
-            <div id="collageName"
-              data-id="collageName"
+
+            <div id="collagename"
+              data-id="collagename"
               className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div data-id="collageName" className="table__head-title">Collage Name</div>
+              <div data-id="collagename" className="table__head-title">Collage Name</div>
             </div>
           </th>
           <th >
-            <div id="firstName"
-              data-id="firstName"
+            <div id="firstname"
+              data-id="firstname"
               className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div data-id="firstName" className="table__head-title">First Name</div>
+              <div data-id="firstname" className="table__head-title">First Name</div>
             </div>
           </th>
           <th >
-            <div id="lastName"
-              data-id="lastName"
+            <div id="lastname"
+              data-id="lastname"
               className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div data-id="lastName" className="table__head-title">Last Name</div>
+              <div data-id="lastname" className="table__head-title">Last Name</div>
             </div>
           </th>
           <th >
@@ -87,11 +90,11 @@ const Table = ({
             </div>
           </th>
           <th >
-            <div id="collageEmail"
-              data-id="phocollageEmailne"
+            <div id="collageemail"
+              data-id="collageemail"
               className="table__head-btn"
               onClick={handleHeadBtnClickTextCol}>
-              <div data-id="collageEmail" className="table__head-title">Collage email</div>
+              <div data-id="collageemail" className="table__head-title">Collage email</div>
             </div>
           </th>
           <th >
@@ -135,11 +138,11 @@ const Table = ({
             </div>
           </th>
           <th >
-            <div id="joinDate"
-              data-id="joinDate"
+            <div id="joindate"
+              data-id="joindate"
               className="table__head-btn"
               onClick={handleHeadBtnClickDateCol}>
-              <div data-id="joinDate" className="table__head-title">Join date</div>
+              <div data-id="joindate" className="table__head-title">Join date</div>
             </div>
           </th>
         </tr>
@@ -147,22 +150,23 @@ const Table = ({
       <tbody>
         {items.map(({
           id,
+          rowindex,
           status,
           state,
           city,
-          collageName,
-          firstName,
-          lastName,
+          collagename,
+          firstname,
+          lastname,
           phone,
-          collageEmail,
+          collageemail,
           trainingComplited,
           complitedTours,
           upcomingTours,
           canceledTours,
           resheduledTours,
-          joinDate
+          joindate
 
-        }, index) => (
+        }) => (
             <tr
               key={id + phone}
             >
@@ -172,7 +176,7 @@ const Table = ({
                   onChange={handleChooseBtnClick}
                 />
               </td>
-              <td>{index + 1}</td>
+              <td>{rowindex}</td>
               <td className="table__status-td">
                 {status === 'Active' && <span className="table__active-td">{status}</span>}
                 {status === 'Pending' && <span className="table__pending-td">{status}</span>}
@@ -181,18 +185,17 @@ const Table = ({
               </td>
               <td>{state}</td>
               <td>{city}</td>
-              <td>{collageName}</td>
-              <td>{firstName}</td>
-              <td>{lastName}</td>
+              <td>{collagename}</td>
+              <td>{firstname}</td>
+              <td>{lastname}</td>
               <td>{phone}</td>
-              <td>{collageEmail}</td>
+              <td>{collageemail}</td>
               <td>{trainingComplited}</td>
               <td>{complitedTours}</td>
               <td>{upcomingTours}</td>
               <td>{canceledTours}</td>
               <td>{resheduledTours}</td>
-              <td>{joinDate}</td>
-
+              <td>{ joindate}</td>
             </tr>
           ))}
       </tbody>
