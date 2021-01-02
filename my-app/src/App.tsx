@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import TableContainer from './Componets/Table/TableContainer/TableContainer';
+import TableContainer from './Componets/SortableTable/TableContainer/TableContainer';
 
 const App: React.FC = () => {
 
@@ -11,5 +11,5 @@ const App: React.FC = () => {
     </div>
   );
 }  
-
+ 
 export default App;

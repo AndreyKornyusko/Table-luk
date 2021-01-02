@@ -126,28 +126,6 @@ export default function TableContainer() {
     setRowStatus(status)
   }
 
-
-  // const handleHeadBtnClickNumberCol = (e) => {
-  //   if (e.target.dataset['id'] === "complitedTours") {
-  //     const itemsToSort = stateItems;
-  //     const compare = (a, b) => {
-  //       return a.complitedTours - b.complitedTours
-  //     }
-  //     const sortedItems = itemsToSort.sort(compare);
-  //     console.log("sortedItems", sortedItems)
-  //     setState(sortedItems)
-  //   }
-  // }
-
-
-  // const handleHeadBtnClickTextCol = (e) => {
-  //   console.log('taget data-id', e.target.dataset['id'])
-  // }
-
-  const handleHeadBtnClickDateCol = (e) => {
-    console.log('taget data-id', e.target.dataset['id'])
-  }
-
   console.log("stateItems", stateItems)
   console.log("rowStatus", rowStatus)
 
