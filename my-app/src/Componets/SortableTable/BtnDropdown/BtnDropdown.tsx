@@ -1,14 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
 import './BtnDropdown.css';
 
-// const options = ["Activate", "Block", "Delete"];
 const options = [
   { id: "Active", value: "Activate" },
   { id: "Blocked", value: "Block" },
   { id: "Delete", value: "Delete" }];
 
 
-const Dropdown = ({ onChange, id }) => {
+const Dropdown = ({ onChange,
+  id,
+  // handleActivate,
+  // handleBlock,
+  // handleDelete
+}) => {
   const node = useRef();
 
   const [open, setOpen] = useState(false);
@@ -46,14 +50,27 @@ const Dropdown = ({ onChange, id }) => {
       </div>
       {open && (
         <ul className="dropdown__menu">
-          {options.map(opt => (
-            <li key={opt.id} className="dropdown__menu-item" onClick={e => handleChange(opt.id)}>
-              {opt.value}
-            </li>
-          ))}
+          {/* <div className="dropdown__menu-item" >
+            <div onClick={handleActivate(id)}>Activate</div>
+          </div>
+          <div className="dropdown__menu-item" >
+            <div onClick={handleBlock(id)}>Block</div>
+          </div>
+          <div className="dropdown__menu-item">
+            <div onClick={handleDelete(id)}>Delete</div>
+          </div> */}
+
+          {
+            options.map(opt => (
+              <li key={opt.id} className="dropdown__menu-item" onClick={e => handleChange(opt.id)}>
+                {opt.value}
+              </li>
+            ))
+          }
         </ul>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './TableContainer.css';
 import Table from '../Table/Table';
+import Modal from '../Modal/Modal';
 
 const tableItems = [
   {
@@ -77,6 +78,7 @@ const useSortableData = (items, config = null) => {
 export default function TableContainer() {
 
   const [stateItems, setState] = useState(tableItems);
+  const [isDeleteBtnModalOpen, setIsOpen] = useState(false);
   const [rowStatus, setRowStatus] = useState({ id: 1000065465665661654611, status: "" });
 
   const { items, requestSort, sortConfig } = useSortableData(stateItems);
@@ -101,20 +103,53 @@ export default function TableContainer() {
     setState(handledItems);
 
     if (rowStatus.status === "Delete") {
-      const updatedItems = stateItems.filter(item => item.id !== rowStatus.id);
-      setState(updatedItems);
+      openDeleteBtnModal();
+
+      // const updatedItems = stateItems.filter(item => item.id !== rowStatus.id);
+      // setState(updatedItems);
     }
   }, [rowStatus]);
 
   const handleChooseBtnClick = (val, id) => {
     const status = { id, status: val };
-    // console.log("status", status)
+    console.log("status", status)
     setRowStatus(status)
   }
 
+
+  const openDeleteBtnModal = () => {
+    console.log("click on backdrop")
+    setIsOpen(true)
+  }
+
+  const closeDeleteBtnModal = () => {
+    console.log("click on backdrop")
+    setIsOpen(false)
+  }
+
+  const handleClickDeleteRowInModal = (e) => {
+    console.log("click on Delete row");
+
+    const updatedItems = stateItems.filter(item => item.id !== rowStatus.id);
+    setState(updatedItems);
+    closeDeleteBtnModal()
+  }
+
+  // const handleActivateRow = (rowId) => {
+  //   console.log("click on Activate, id: ", rowId)
+  // }
+
+  // const handleBlockRow = (rowId) => {
+  //   console.log("click on Block, id:", rowId)
+  // }
+
+  // const handleDeleteRow = (rowId) => {
+  //   console.log("click on Delete, id:", rowId)
+  // }
+
   // console.log("sortConfig", sortConfig)
-  // console.log("stateItems", stateItems)
-  // console.log("rowStatus", rowStatus)
+  console.log("stateItems", stateItems)
+  console.log("rowStatus", rowStatus)
 
   return (
     <div>
@@ -122,7 +157,16 @@ export default function TableContainer() {
         items={items}
         requestSort={(e) => requestSort(e.target.dataset['id'])}
         handleChooseBtnClick={handleChooseBtnClick}
+      // handleActivate={handleActivateRow}
+      // handleBlock={handleBlockRow}
+      // handleDelete={handleDeleteRow}
       />
+      {isDeleteBtnModalOpen &&
+        <Modal
+          onClose={closeDeleteBtnModal}
+          onDelete={handleClickDeleteRowInModal}
+        />}
+
     </div>
   )
 }

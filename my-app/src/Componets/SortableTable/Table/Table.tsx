@@ -2,23 +2,15 @@ import React from 'react';
 import './Table.css';
 import Dropdown from '../BtnDropdown/BtnDropdown';
 
-// {
-//   id: 101, status: "Active", state: "president", city: "New York", collageName: "Donald Trump",
-//    firstName: "Donald", lastName: "Trump", phone: "455-44-41", collageEmail: "trump@mail.com",
-//     trainingComplited: "1/6",
-//   complitedTours: "10", upcomingTours: "10", canceledTours: "10", resheduledTours: "10",
-//    joinDate: "10/12/2020"
-// },
 
- 
 const Table = ({
   items,
-  requestSort, sortConfig ,
-
+  requestSort,
+  // sortConfig ,
   handleChooseBtnClick,
-  handleHeadBtnClickNumberCol,
-  handleHeadBtnClickTextCol,
-  handleHeadBtnClickDateCol
+  // handleActivate,
+  // handleBlock,
+  // handleDelete
 }) => (
     <table className="table">
       <thead >
@@ -87,7 +79,7 @@ const Table = ({
             <div id="phone"
               data-id="phone"
               className="table__head-btn"
-              onClick={handleHeadBtnClickNumberCol}>
+              onClick={requestSort}>
               <div data-id="phone" className="table__head-title">Phone</div>
             </div>
           </th>
@@ -176,6 +168,9 @@ const Table = ({
                 <Dropdown
                   id={id}
                   onChange={handleChooseBtnClick}
+                // handleActivate={handleActivate}
+                // handleBlock={handleBlock}
+                // handleDelete={handleDelete}
                 />
               </td>
               <td>{rowindex}</td>
@@ -197,7 +192,7 @@ const Table = ({
               <td>{upcomingTours}</td>
               <td>{canceledTours}</td>
               <td>{resheduledTours}</td>
-              <td>{ joindate}</td>
+              <td>{joindate}</td>
             </tr>
           ))}
       </tbody>

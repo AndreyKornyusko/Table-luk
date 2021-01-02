@@ -1,36 +1,45 @@
 import React, { useEffect, useState, useRef } from "react";
 import './Modal.css';
 
-const Modal = ({ onChange, id }) => {
+const Modal = ({ onClose, onDelete }) => {
   const node = useRef();
 
-  const [open, setOpen] = useState(false);
+  const handleBackdropClick = e => {
+    // console.log("node.current", node.current)
+    if (node.current.contains(e.target)) return;
+    onClose();
+  };
 
-  const handleClick = (e: any) => {
-    if (node.current.contains(e.target)) {
-      // inside click
-      return;
-    }
-    // outside click
-    setOpen(false);
+  const handleKeyPress = e => {
+    if (e.code !== 'Escape') return;
+    onClose();
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleKeyPress);
 
     return () => {
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("keydown", handleKeyPress);
     };
   }, []);
 
+
+  console.log("node", node)
+
   return (
-    <div ref={node} className="dropdown">
-      <div className="dropdown__toggler" onClick={e => setOpen(!open)}>
+
+    <div
+      className="modalbackdrop"
+      ref={node}
+      onClick={handleBackdropClick}
+    >
+      <div className="modalWrap">
+        <h3>Do you confirm row deletion?</h3>
+        <div className="modalWrap__btn-wrap">
+          <button className="modalWrap__btn-close" onClick={onClose}>Close</button>
+          <button className="modalWrap__btn-del" onClick={onDelete}>Delete</button>
+        </div>
       </div>
-      {open && (
-        <ul className="dropdown__menu">
-        </ul>
-      )}
     </div>
   );
 };

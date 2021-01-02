@@ -1,0 +1,50 @@
+.modalbackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: rgba(0, 0 ,0 ,0.2); */
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalWrap {
+  width: 500px;
+  /* height: 400px; */
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+}
+
+.modalWrap__btn-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.modalWrap__btn-close,
+.modalWrap__btn-del {
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.modalWrap__btn-close {
+  background-color: rgb(21, 57, 218);
+  color: #fff;
+  border: none;
+}
+
+.modalWrap__btn-del {
+  background-color: #fff;
+  color: rgb(231, 26, 26);
+  color: rgb(231, 26, 26);
+  border: 2px solid;
+}
