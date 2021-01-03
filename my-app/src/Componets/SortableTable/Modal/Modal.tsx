@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import './Modal.css';
 
 const Modal = ({ onClose, onDelete }) => {
@@ -17,15 +17,11 @@ const Modal = ({ onClose, onDelete }) => {
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyPress);
-
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
   }, []);
-
-
-  console.log("node", node)
-
+  // console.log("node", node)
   return (
 
     <div
@@ -36,7 +32,7 @@ const Modal = ({ onClose, onDelete }) => {
       <div className="modalWrap">
         <h3>Do you confirm row deletion?</h3>
         <div className="modalWrap__btn-wrap">
-          <button className="modalWrap__btn-close" onClick={onClose}>Close</button>
+          <button className="modalWrap__btn-close" onClick={onClose}>Cancel</button>
           <button className="modalWrap__btn-del" onClick={onDelete}>Delete</button>
         </div>
       </div>

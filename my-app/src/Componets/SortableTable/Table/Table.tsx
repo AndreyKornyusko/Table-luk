@@ -7,10 +7,7 @@ const Table = ({
   items,
   requestSort,
   // sortConfig ,
-  handleChooseBtnClick,
-  // handleActivate,
-  // handleBlock,
-  // handleDelete
+  handleChooseActionBtnClick,
 }) => (
     <table className="table">
       <thead >
@@ -24,6 +21,7 @@ const Table = ({
               onClick={requestSort}>
               <div data-id="rowindex"
                 className="table__head-title">#</div>
+              <div data-id="rowindex" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -32,6 +30,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="status" className="table__head-title">Status</div>
+              <div data-id="status" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -40,6 +39,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="state" className="table__head-title">State</div>
+              <div data-id="state" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -48,6 +48,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="city" className="table__head-title">City</div>
+              <div data-id="city" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -57,6 +58,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="collagename" className="table__head-title">Collage Name</div>
+              <div data-id="collagename" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -65,6 +67,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="firstname" className="table__head-title">First Name</div>
+              <div data-id="firstname" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -73,6 +76,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="lastname" className="table__head-title">Last Name</div>
+              <div data-id="lastname" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -81,6 +85,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="phone" className="table__head-title">Phone</div>
+              <div data-id="phone" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -89,6 +94,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="collageemail" className="table__head-title">Collage email</div>
+              <div data-id="collageemail" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -97,6 +103,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="trainingComplited" className="table__head-title">Training complited</div>
+              <div data-id="trainingComplited" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -105,6 +112,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="complitedTours" className="table__head-title">Complited Tours</div>
+              <div data-id="complitedTours" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -113,6 +121,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="upcomingTours" className="table__head-title">Upcoming Tours</div>
+              <div data-id="upcomingTours" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -121,6 +130,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="canceledTours" className="table__head-title">Canceled Tours</div>
+              <div data-id="canceledTours" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -129,6 +139,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="resheduledTours" className="table__head-title">Resheduled Tours</div>
+              <div data-id="resheduledTours" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
           <th >
@@ -137,6 +148,7 @@ const Table = ({
               className="table__head-btn"
               onClick={requestSort}>
               <div data-id="joindate" className="table__head-title">Join date</div>
+              <div data-id="joindate" className="table__head-arrows">&#8593;&#8595;</div>
             </div>
           </th>
         </tr>
@@ -167,10 +179,7 @@ const Table = ({
               <td className="table__btn-td">
                 <Dropdown
                   id={id}
-                  onChange={handleChooseBtnClick}
-                // handleActivate={handleActivate}
-                // handleBlock={handleBlock}
-                // handleDelete={handleDelete}
+                  onChange={handleChooseActionBtnClick}
                 />
               </td>
               <td>{rowindex}</td>
@@ -178,7 +187,6 @@ const Table = ({
                 {status === 'Active' && <span className="table__active-td">{status}</span>}
                 {status === 'Pending' && <span className="table__pending-td">{status}</span>}
                 {status === 'Blocked' && <span className="table__blocked-td">{status}</span>}
-
               </td>
               <td>{state}</td>
               <td>{city}</td>

@@ -27,10 +27,21 @@ tr:nth-child(even) {
 }
 
 .table__head-btn {
+  display: flex;
+  flex-wrap: nowrap;
   cursor: pointer;
   padding: 10px;
-  padding-right: 20px;
+
+  /* padding-right: 30px; */
 }
+
+.table__head-title{
+  margin-right: 5px;
+}
+
+/* .table__head-btn::after {
+  content: "\1F811 \1F817";
+} */
 
 .table__active-td {
   display: block;

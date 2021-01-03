@@ -2,16 +2,13 @@ import React, { useEffect, useState, useRef } from "react";
 import './BtnDropdown.css';
 
 const options = [
-  { id: "Active", value: "Activate" },
-  { id: "Blocked", value: "Block" },
-  { id: "Delete", value: "Delete" }];
+  { id: "Active-action", action: "Activate" },
+  { id: "Block-action", action: "Block" },
+  { id: "Delete-action", action: "Delete" }];
 
 
 const Dropdown = ({ onChange,
   id,
-  // handleActivate,
-  // handleBlock,
-  // handleDelete
 }) => {
   const node = useRef();
 
@@ -26,8 +23,8 @@ const Dropdown = ({ onChange,
     setOpen(false);
   };
 
-  const handleChange = selectedValue => {
-    onChange(selectedValue, id);
+  const handleChange = selectedAction => {
+    onChange(selectedAction, id);
     setOpen(false);
   };
 
@@ -50,20 +47,10 @@ const Dropdown = ({ onChange,
       </div>
       {open && (
         <ul className="dropdown__menu">
-          {/* <div className="dropdown__menu-item" >
-            <div onClick={handleActivate(id)}>Activate</div>
-          </div>
-          <div className="dropdown__menu-item" >
-            <div onClick={handleBlock(id)}>Block</div>
-          </div>
-          <div className="dropdown__menu-item">
-            <div onClick={handleDelete(id)}>Delete</div>
-          </div> */}
-
           {
             options.map(opt => (
-              <li key={opt.id} className="dropdown__menu-item" onClick={e => handleChange(opt.id)}>
-                {opt.value}
+              <li key={opt.id} className="dropdown__menu-item" onClick={e => handleChange(opt.action)}>
+                {opt.action}
               </li>
             ))
           }
