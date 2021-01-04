@@ -21,6 +21,10 @@ tr:nth-child(even) {
   border-bottom: 1px solid #b9b29f;
 }
 
+tr:last-child td{
+  border-bottom: 1px solid #464545;
+}
+
 .table__btn-td {
   text-align: center;
   padding: 0;
@@ -35,7 +39,7 @@ tr:nth-child(even) {
   /* padding-right: 30px; */
 }
 
-.table__head-title{
+.table__head-title {
   margin-right: 5px;
 }
 
